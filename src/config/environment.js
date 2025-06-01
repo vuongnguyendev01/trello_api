@@ -6,11 +6,12 @@
 require('dotenv').config()
 
 export const env = {
-    APP_PORT: process.env.APP_PORT,
-    APP_HOST: process.env.APP_HOST,
+    LOCAL_DEV_APP_PORT: process.env.LOCAL_DEV_APP_PORT,
+    LOCAL_DEV_APP_HOST: process.env.LOCAL_DEV_APP_HOST,
     MONGODB_URI: process.env.MONGODB_URI,
     DATABASE_NAME: process.env.DATABASE_NAME,
     JWT_SECRET: process.env.JWT_SECRET,
     JWT_EXPIRATION: process.env.JWT_EXPIRATION,
-    NODE_ENV: process.env.NODE_ENV
+    NODE_ENV: process.env.NODE_ENV,
+    BUILD_MODE: process.env.BUILD_MODE,
 }

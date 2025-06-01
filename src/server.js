@@ -24,11 +24,19 @@ const START_SEVER = () => {
   // Handle error
   app.use(errorHandlingMiddleware)
 
+  if (env.BUILD_MODE === 'production') {
+    app.listen(process.env.APP_PORT, () => {
+      // eslint-disable-next-line no-console
+      console.log(`Hello Vuong Dev, I am running production at Port ${process.env.APP_PORT}`)
+    })
+  }
+  else {
+    app.listen(env.LOCAL_DEV_APP_PORT, env.LOCAL_DEV_APP_HOST, () => {
+      // eslint-disable-next-line no-console
+      console.log(`Hello Vuong Dev, I am running development at http://${env.LOCAL_DEV_APP_HOST}:${env.LOCAL_DEV_APP_PORT}/`)
+    })
+  }
 
-  app.listen(env.APP_PORT, env.APP_HOST, () => {
-    // eslint-disable-next-line no-console
-    console.log(`Hello Vuong Dev, I am running at http://${env.APP_HOST}:${env.APP_PORT}/`)
-  })
 
   exitsHook(() => {
     CLOSE_DB()
